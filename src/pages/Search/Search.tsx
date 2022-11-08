@@ -28,7 +28,7 @@ const Search = (): ReactElement => {
 
     const handleChange = debounce(async (event: ChangeEvent<HTMLInputElement>): Promise<void> => {
         setIsLoading(true);
-        
+
         const results = await apiUtils.searchRepositories({
             limit: 25,
             pageNumber: 1,
@@ -53,34 +53,37 @@ const Search = (): ReactElement => {
                 autoFocus
                 onChange={handleChange}
             />
-            <table>
-                <thead>
-                    <tr>
-                        <th>Repository Name</th>
-                        <th>Author Name</th>
-                        <th>Stars</th>
-                        <th>Actions</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    {results && results.map((result: ISearchResult, idx: number) => (
-                        <tr key={idx}>
-                            <td>{result?.name}</td>
-                            <td>{result?.owner?.login}</td>
-                            <td>{result?.watchers_count}</td>
-                            <td>
-                                <a
-                                    href={result?.html_url}
-                                    target="_blank"
-                                    rel="noreferrer"
-                                >
-                                    Open in new tab
-                                </a>
-                            </td>
+            {results.length > 0 && (
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Repository Name</th>
+                            <th>Author Name</th>
+                            <th>Stars</th>
+                            <th>Actions</th>
                         </tr>
-                    ))}
-                </tbody>
-            </table>
+                    </thead>
+                    <tbody>
+                        {results.map((result: ISearchResult, idx: number) => (
+                            <tr key={idx}>
+                                <td>{result?.name}</td>
+                                <td>{result?.owner?.login}</td>
+                                <td>{result?.watchers_count}</td>
+                                <td>
+                                    <a
+                                        href={result?.html_url}
+                                        target="_blank"
+                                        rel="noreferrer"
+                                    >
+                                        Open in new tab
+                                    </a>
+                                </td>
+                            </tr>
+                        ))}
+                    </tbody>
+                </table>
+            )}
+            
             {isLoading && (
                 <span>Loading...</span>
             )}
