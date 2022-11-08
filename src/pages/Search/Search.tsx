@@ -3,6 +3,7 @@ import {
     ReactElement,
     useState,
 } from "react";
+import debounce from "lodash.debounce";
 
 import {
     apiUtils,
@@ -25,17 +26,18 @@ const Search = (): ReactElement => {
     const [isLoading, setIsLoading] = useState<boolean>(false);
     const [results, setResults] = useState<ISearchResult[]>([]);
 
-    const handleChange = async (event: ChangeEvent<HTMLInputElement>): Promise<void> => {
+    const handleChange = debounce(async (event: ChangeEvent<HTMLInputElement>): Promise<void> => {
         setIsLoading(true);
+        
         const results = await apiUtils.searchRepositories({
             limit: 25,
             pageNumber: 1,
             search: event.target.value, 
         });
-        console.log(results)
+        
         setResults(results.items);
         setIsLoading(false);
-    };
+    }, 500);
 
     return (
         <>
