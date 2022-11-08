@@ -7,7 +7,7 @@ describe("Search Page", () => {
     const mockPage = (props?: any) => render(
 		<Search
             {...props} 
-        />,
+        />
 	);
 
     test("Renders a labelled search field", () => {
@@ -15,6 +15,25 @@ describe("Search Page", () => {
         
         expect(
             screen.getByRole("textbox", { name: "Search" })
+        ).toBeInTheDocument();
+    });
+
+    test("Renders a table of results", () => {
+        mockPage();
+        
+        expect(screen.getByRole("table")).toBeInTheDocument();
+    });
+
+    test.each([
+        "Repository Name",
+        "Author Name",
+        "Stars",
+        "Actions",
+    ])("Renders a table header %p", (header) => {
+        mockPage();
+        
+        expect(
+            screen.getByRole("columnheader", { name: header })
         ).toBeInTheDocument();
     });
 });
