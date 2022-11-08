@@ -22,14 +22,14 @@ const Search = (): React.ReactElement => {
                 onChange={handleChange}
             />
             <table>
-            <thead>
-                <tr>
-                    <th>Repository Name</th>
-                    <th>Author Name</th>
-                    <th>Stars</th>
-                    <th>Actions</th>
-                </tr>
-            </thead>
+                <thead>
+                    <tr>
+                        <th>Repository Name</th>
+                        <th>Author Name</th>
+                        <th>Stars</th>
+                        <th>Actions</th>
+                    </tr>
+                </thead>
                 <tbody>
                 
                 </tbody>
