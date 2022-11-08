@@ -1,0 +1,33 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@300&display=swap');
+@import "./vars.scss";
+
+html, body, .root {
+    height: 100%;
+}
+
+body {
+    font-family: 'Roboto Mono', monospace;
+    color: $dark-grey;
+    font-size: 16px;
+    margin: 0;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: $base-spacing;
+}
+
+label {
+    padding-right: $base-spacing;
+}
+
+table {
+    border-collapse: collapse;
+    margin: $base-spacing auto;
+}
+
+th, td {
+    min-width: min-content;
+    padding: $base-spacing;
+}

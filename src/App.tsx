@@ -9,7 +9,9 @@ const App = () => {
         <>
             <Header />
             <main>
-                <Search />
+                <div className="container">
+                    <Search />
+                </div>
             </main>
             <Footer />
         </>

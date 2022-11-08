@@ -6,6 +6,9 @@ import {
 import debounce from "lodash.debounce";
 
 import {
+    LoadingSpinner,
+} from "components";
+import {
     apiUtils,
 } from "utils";
 
@@ -75,7 +78,9 @@ const Search = (): ReactElement => {
                                         target="_blank"
                                         rel="noreferrer"
                                     >
-                                        Open in new tab
+                                        <span className="material-symbols-outlined">
+                                            open_in_new
+                                        </span>
                                     </a>
                                 </td>
                             </tr>
@@ -85,7 +90,7 @@ const Search = (): ReactElement => {
             )}
             
             {isLoading && (
-                <span>Loading...</span>
+                <LoadingSpinner />
             )}
         </>
     );

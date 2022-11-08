@@ -1,0 +1,18 @@
+@import "styles/vars.scss";
+
+.Footer {
+  position: sticky;
+  top: 100vh;
+  color: $white;
+  background-color: $gulf-blue;
+  text-align: right;
+}
+
+.FooterLink {
+  color: $white;
+  text-decoration: none;
+  padding: $base-spacing calc($base-spacing * 2);
+  &:hover {
+    text-decoration: dotted;
+  }
+}

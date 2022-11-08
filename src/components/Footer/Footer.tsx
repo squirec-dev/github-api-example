@@ -1,8 +1,17 @@
+import styles from "./styles.module.scss";
+
 const Footer = () => {
     return (
-        <footer>
-            {/* Global footer component */}
-            <a href="https://github.com/squirec-dev/">By squirec-dev</a>
+        <footer className={styles["Footer"]}>
+            <div className="container">
+                {/* Global footer component */}
+                <a
+                    className={styles["FooterLink"]}
+                    href="https://github.com/squirec-dev/"
+                >
+                    squirec-dev
+                </a>
+            </div>
         </footer>
     );
 };
