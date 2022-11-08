@@ -1,18 +1,28 @@
 @import "styles/vars.scss";
 
 .Footer {
-  position: sticky;
-  top: 100vh;
-  color: $white;
-  background-color: $gulf-blue;
-  text-align: right;
+    position: sticky;
+    top: 100vh;
+    color: $white;
+    background-color: $gulf-blue;
+    text-align: right;
 }
 
 .FooterLink {
-  color: $white;
-  text-decoration: none;
-  padding: $base-spacing calc($base-spacing * 2);
-  &:hover {
-    text-decoration: dotted;
-  }
+    display: inline-flex;
+    justify-content: flex-end;
+    align-content: center;
+    color: $white;
+    text-decoration: none;
+    padding: $base-spacing calc(#{$base-spacing} * 2);
+    border-bottom: 1px solid $gulf-blue;
+
+    &:hover {
+        text-decoration: dotted;
+        border-color: $white;
+    }
+}
+
+.FooterName {
+    padding-left: $base-spacing;
 }

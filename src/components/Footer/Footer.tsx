@@ -9,7 +9,8 @@ const Footer = () => {
                     className={styles["FooterLink"]}
                     href="https://github.com/squirec-dev/"
                 >
-                    squirec-dev
+                    <span className="material-icons">data_object</span>
+                    <span className={styles["FooterName"]}>squirec-dev</span>
                 </a>
             </div>
         </footer>

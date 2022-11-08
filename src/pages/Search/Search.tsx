@@ -28,13 +28,14 @@ interface ISearchResult {
 const Search = (): ReactElement => {
     const [isLoading, setIsLoading] = useState<boolean>(false);
     const [results, setResults] = useState<ISearchResult[]>([]);
+    const [pageNumber, setPageNumber] = useState<number>(1);
 
     const handleChange = debounce(async (event: ChangeEvent<HTMLInputElement>): Promise<void> => {
         setIsLoading(true);
 
         const results = await apiUtils.searchRepositories({
             limit: 25,
-            pageNumber: 1,
+            pageNumber,
             search: event.target.value, 
         });
         
@@ -74,11 +75,12 @@ const Search = (): ReactElement => {
                                 <td>{result?.watchers_count}</td>
                                 <td>
                                     <a
+                                        className={styles["ActionLink"]}
                                         href={result?.html_url}
                                         target="_blank"
                                         rel="noreferrer"
                                     >
-                                        <span className="material-symbols-outlined">
+                                        <span className="material-icons">
                                             open_in_new
                                         </span>
                                     </a>
