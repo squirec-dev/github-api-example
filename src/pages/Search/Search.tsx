@@ -22,9 +22,11 @@ interface ISearchResult {
 } // TODO: find a GitHub type for result
 
 const Search = (): ReactElement => {
-    const [results, setResults] = useState([]);
+    const [isLoading, setIsLoading] = useState<boolean>(false);
+    const [results, setResults] = useState<ISearchResult[]>([]);
 
     const handleChange = async (event: ChangeEvent<HTMLInputElement>): Promise<void> => {
+        setIsLoading(true);
         const results = await apiUtils.searchRepositories({
             limit: 25,
             pageNumber: 1,
@@ -32,6 +34,7 @@ const Search = (): ReactElement => {
         });
         console.log(results)
         setResults(results.items);
+        setIsLoading(false);
     };
 
     return (
@@ -76,6 +79,9 @@ const Search = (): ReactElement => {
                     ))}
                 </tbody>
             </table>
+            {isLoading && (
+                <span>Loading...</span>
+            )}
         </>
     );
 }
