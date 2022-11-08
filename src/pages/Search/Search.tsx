@@ -1,10 +1,16 @@
-import React from "react";
+import {
+    ChangeEvent,
+    ReactElement,
+    useState,
+} from "react";
 
 import styles from "./styles.module.scss";
 
-const Search = (): React.ReactElement => {
-    const handleChange = (query: React.ChangeEvent<HTMLInputElement>): void => {
-        console.log(query?.target?.value);
+const Search = (): ReactElement => {
+    const [results, setResults] = useState([]);
+
+    const handleChange = (event: ChangeEvent<HTMLInputElement>): void => {
+        console.log(event?.target?.value);
     };
 
     return (
