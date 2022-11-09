@@ -25,9 +25,16 @@ interface ISearchResult {
     [key: string]: any,
 } // TODO: find a GitHub type for result
 
-const Search = (): ReactElement => {
+
+type TSearch = {
+    defaultResults?: ISearchResult[],
+}
+
+const Search = ({
+    defaultResults = [],
+}: TSearch): ReactElement => {
     const [isLoading, setIsLoading] = useState<boolean>(false);
-    const [results, setResults] = useState<ISearchResult[]>([]);
+    const [results, setResults] = useState<ISearchResult[]>(defaultResults);
     const [pageNumber, setPageNumber] = useState<number>(1);
 
     const handleChange = debounce(async (event: ChangeEvent<HTMLInputElement>): Promise<void> => {

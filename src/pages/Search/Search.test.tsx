@@ -1,6 +1,8 @@
 import React from "react";
-import { render, screen } from "@testing-library/react";
+import { fireEvent, render, screen } from "@testing-library/react";
+
 import Search from "./Search";
+import SearchAPI from "../../mocks/SearchAPI";
 
 // TODO: "props: any" to be replaced with proper type
 describe("Search Page", () => {
@@ -19,7 +21,7 @@ describe("Search Page", () => {
     });
 
     test("Renders a table of results", () => {
-        mockPage();
+        mockPage({ defaultResults: SearchAPI });
         
         expect(screen.getByRole("table")).toBeInTheDocument();
     });
@@ -30,7 +32,7 @@ describe("Search Page", () => {
         "Stars",
         "Actions",
     ])("Renders a table header %p", (header) => {
-        mockPage();
+        mockPage({ defaultResults: SearchAPI });
         
         expect(
             screen.getByRole("columnheader", { name: header })
